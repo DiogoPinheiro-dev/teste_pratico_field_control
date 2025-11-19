@@ -1,0 +1,40 @@
+<div class="min-h-screen bg-gray-50 p-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Meus Quadros</h1>
+      <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow">
+        + Novo Quadro
+      </button>
+    </div>
+
+    <div *ngIf="loading" class="flex justify-center p-10">
+      <span class="text-blue-500 text-xl animate-pulse">Carregando...</span>
+    </div>
+
+    <div *ngIf="error" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
+      <p class="font-bold">Erro de Conexão</p>
+      <p>{{ error.message }}</p>
+    </div>
+
+    <div *ngIf="!loading && !error" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div *ngFor="let board of boards" 
+           class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 cursor-pointer group">
+        
+        <div class="flex items-center justify-between mb-4">
+          <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+            {{ board.title.charAt(0).toUpperCase() }}
+          </div>
+          <span class="text-xs font-medium text-gray-400">#{{ board.id }}</span>
+        </div>
+        
+        <h2 class="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
+          {{ board.title }}
+        </h2>
+        <p class="text-gray-500 text-sm mt-2">Clique para ver as tarefas</p>
+
+      </div>
+
+    </div>
+  </div>
+</div>

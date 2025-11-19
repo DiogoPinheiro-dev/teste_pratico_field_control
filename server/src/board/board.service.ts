@@ -10,7 +10,7 @@ export class BoardService {
   constructor(private prisma: PrismaService) {}
 
   create(createBoardInput: CreateBoardInput) {
-    return this.prisma.board.create({ 
+    return this.prisma.board.create({
       data: createBoardInput,
     });
   }

@@ -13,7 +13,7 @@ export class BoardResolver {
     return this.boardService.create(createBoardInput);
   }
 
-  @Query(() => [Board], { name: 'board' })
+  @Query(() => [Board], { name: 'boards' })
   findAll() {
     return this.boardService.findAll();
   }
